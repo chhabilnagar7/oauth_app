@@ -16,14 +16,14 @@ app.use(
   session({ secret: "secret-key", resave: false, saveUninitialized: true })
 );
 
-mongoose.connect(process.env.MONGO_URI, {
-  useNewUrlParser: true,
-  useUnifiedTopology: true,
-});
+mongoose.connect('mongodb://localhost:27017')
+.then(() => console.log('db connection successfull'))
+.then(() => {
+  app.listen(process.env.PORT || 5000, () => {
+      console.log('server running');
+  })
+
+})
 
 app.use('/api',authRoutes);
 app.use('/auth',oauthRoutes);
-
-app.listen(process.env.PORT || 5000, () => {
-    console.log('server running');
-})

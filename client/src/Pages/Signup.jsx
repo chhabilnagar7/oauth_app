@@ -11,7 +11,7 @@ const Signup = () => {
     //  to handle singup functionality
     const handleSignup = async () => {
         try{
-            await axios.post("/api/signup",{name,email,password});
+            await axios.post("http://localhost:8000/api/signup",{name,email,password});
             navigate("/login");
 
         }catch(error){
@@ -23,7 +23,7 @@ const Signup = () => {
 
     // to handle login
     const handleSocialLogin = (provider) => {
-        window.location.href = `/auth/${provider}`;
+        window.location.href = `http://localhost:8000/auth/${provider}`;
     }
 
   return (

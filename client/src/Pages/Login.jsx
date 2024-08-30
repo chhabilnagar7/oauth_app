@@ -9,7 +9,7 @@ const Login = () => {
 
     const handleLogin = async()=>{
         try{
-            const response = await axios.post('/api/login',{email,password});
+            const response = await axios.post('http://localhost:8000/api/login',{email,password});
             if(response.data.success){
                 navigate("/home");
             }else{
@@ -21,7 +21,7 @@ const Login = () => {
     }
 
     const handleSocialLogin = (provider) => {
-        window.location.href = `/auth/${provider}`;
+        window.location.href = `http://localhost:8000/auth/${provider}`;
     }
 
 
@@ -37,7 +37,7 @@ const Login = () => {
       />
       <input
         type="password"
-        placeholder="Name"
+        placeholder="Password"
         value={password}
         onChange={(e) => setPassword(e.target.value)}
       />
